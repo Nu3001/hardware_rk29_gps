@@ -463,7 +463,7 @@ nmea_reader_parse( NmeaReader*  r )
     Token          tok;
 
 //  LOGI("%s:", __FUNCTION__);
-    LOGI("Received: %.*s", r->pos, r->in);
+    if(GPS_DEBUG) LOGI("Received: %.*s", r->pos, r->in);
     if (r->pos < 9) {
         LOGI("Too short. discarded.");
         return;
