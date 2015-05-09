@@ -644,12 +644,12 @@ nmea_reader_parse( NmeaReader*  r )
 //      LOGI(temp);
 #endif
         if (r->callback) {
-			LOGI("======dzwei, before calling location callback !");
+	    if (GPS_DEBUG) LOGI("======dzwei, before calling location callback !");
             r->callback( &r->fix );
             r->fix.flags = 0;
         }
         else {
-            LOGI("no callback, keeping data until needed !");
+            if (GPS_DEBUG) LOGI("no callback, keeping data until needed !");
         }
 #if GPS_SV_INCLUDE
         if ((r->sv_status_changed == 1) && (r->sv_callback)){
@@ -657,7 +657,7 @@ nmea_reader_parse( NmeaReader*  r )
             r->sv_status_changed = 0;
         }
         else{
-            LOGI("no sv callback, keeping data until needed !");
+            if (GPS_DEBUG) LOGI("no sv callback, keeping data until needed !");
         }
 #endif
     }
